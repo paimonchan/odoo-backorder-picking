@@ -1,15 +1,12 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Name Module",
-    'summary': """summary""",
-    'description': """description""",
+    'name': "odoo-backorder-picking",
+    'summary': """Disable odoo auto create new stock picking on backorder picking""",
+    'description': """Disable odoo auto create new stock picking on backorder picking""",
     'author': "Paimon",
-    'category': 'Manga',
-    'version': '0.1',
+    'category': 'Other',
+    'version': '15.0.0',
     'depends': ['base'],
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
     ],
 }
