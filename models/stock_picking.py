@@ -7,6 +7,12 @@ class StockPicking(models.Model):
     _inherit = 'stock.picking'
 
     def _create_backorder(self):
+        """
+        overwrite function _create_backorder.
+        this function is called to create new stock picking on remaining backorder item.
+        to prevent create new stock picking, return original (source) picking so the remaining backorder item,
+        will be put in the same picking as source picking.
+        """
         param = self.env['ir.config_parameter'].sudo()
         disable_merge_backorder = param.get_param('paimon.disable_merge_backorder')
         if disable_merge_backorder:
