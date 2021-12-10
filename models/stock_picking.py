@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models
-
+from odoo import models, api
 
 class StockPicking(models.Model):
     _inherit = 'stock.picking'
@@ -21,3 +20,9 @@ class StockPicking(models.Model):
         for record in self:
             picking_ids |= record
         return picking_ids
+
+    @api.model
+    def create(self, vals):
+        record = super().create(vals)
+        record.write(dict(printed=True))
+        return record
