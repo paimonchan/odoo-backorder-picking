@@ -24,5 +24,8 @@ class StockPicking(models.Model):
     @api.model
     def create(self, vals):
         record = super().create(vals)
-        record.write(dict(printed=True))
+        param = self.env['ir.config_parameter'].sudo()
+        disable_merge_backorder = param.get_param('paimon.disable_merge_backorder')
+        if not disable_merge_backorder:
+            record.write(dict(printed=True))
         return record
