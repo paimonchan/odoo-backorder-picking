@@ -23,6 +23,9 @@ class StockPicking(models.Model):
 
     @api.model
     def create(self, vals):
+        """
+        override function create, set printed to true so product qty not merge into existing qty
+        """
         record = super().create(vals)
         param = self.env['ir.config_parameter'].sudo()
         disable_merge_backorder = param.get_param('paimon.disable_merge_backorder')
