@@ -3,6 +3,16 @@
 from odoo import models, api
 
 class StockPicking(models.Model):
+    """
+    NOTE: merge backorder can be disable by set this parameter `paimon.disable_merge_backorder`
+    follow this instruction to disable merge backorder:
+    1. go to technical mode in menu setting (as developer mode)
+    2. go to menu tecknical -> system parameter
+    3. create new entry with 
+       - key                : paimon.disable_merge_backorde
+       - value              : True
+    """
+
     _inherit = 'stock.picking'
 
     def _create_backorder(self):
