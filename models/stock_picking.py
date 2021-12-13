@@ -40,5 +40,9 @@ class StockPicking(models.Model):
         param = self.env['ir.config_parameter'].sudo()
         disable_merge_backorder = param.get_param('paimon.disable_merge_backorder')
         if not disable_merge_backorder:
-            record.write(dict(printed=True))
+            contain_move_orig = False
+            for line in record.move_lines:
+                contain_move_orig = contain_move_orig or line.move_orig_ids.exist()
+            if contain_move_orig:
+                record.write(dict(printed=True))
         return record
