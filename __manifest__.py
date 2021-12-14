@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': "odoo-backorder-picking",
-    'summary': """Disable odoo auto create new stock picking on backorder picking""",
+    'summary': """Merge backorder picking into source/orignal picking""",
     'description': """Disable odoo auto create new stock picking on backorder picking""",
     'author': "Paimon",
     'category': 'Other',
