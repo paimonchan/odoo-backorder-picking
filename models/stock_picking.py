@@ -11,6 +11,7 @@ class StockPicking(models.Model):
     3. create new entry with 
        - key                : paimon.disable_merge_backorde
        - value              : True
+    another option to disable, you can directly uninstall this module to disable merge backorder
     """
 
     _inherit = 'stock.picking'
@@ -40,6 +41,7 @@ class StockPicking(models.Model):
         param = self.env['ir.config_parameter'].sudo()
         disable_merge_backorder = param.get_param('paimon.disable_merge_backorder')
         if not disable_merge_backorder:
+            # add checking if picking contain backorder movement
             contain_move_orig = False
             for line in record.move_lines:
                 contain_move_orig = contain_move_orig or line.move_orig_ids.exist()
